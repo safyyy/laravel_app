@@ -10,24 +10,18 @@ class MessageController extends Controller
     public function getMessages(Request $request, $id)
     {
         $user = $request->user()->id;
-        $messages = Message::where([['sender_id', '=', $user], ['receiver_id', '=', $id]])
-            ->orWhere([['receiver_id', '=', $user], ['sender_id', '=', $id]])
+        $messages = Message::
+            where("receiver_id",$id)
             ->get();
 
-        if (sizeof($messages) > 0) {
-            return response()->json($messages, 200);
-        } else
-            return response()->json([
-                []
-            ], 200);
+        return $messages;
     }
 
-    public function sendMessage(Request $request, $id)
+    public function sendMessage(Request $request)
     {
         $message = Message::create([
             "body" => $request->input("body"),
-            "sender_id" => $request->user()->id,
-            "receiver_id" => $id
+            "receiver_id" => $request->id
         ]);
 
         if ($message) {
@@ -41,5 +35,5 @@ class MessageController extends Controller
         }
     }
 
-    
+
 }

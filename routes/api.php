@@ -31,7 +31,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post("/setImage",[UserController::class,"updateImage"]);
     Route::get("/messages/{id}",[MessageController::class,"getMessages"]);
-    Route::post("/messages/{id}",[MessageController::class,"sendMessage"]);
+    Route::post("/message",[MessageController::class,"sendMessage"]);
+
+    Route::get("/citizens", [UserController::class, "getCitizens"]);
 
 });
 

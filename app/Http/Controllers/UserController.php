@@ -28,4 +28,10 @@ class UserController extends Controller
         return response()->json("User updated",200);
     }
 
+    public function getCitizens(Request $request)
+    {
+        $citizens = User::where("admin", 0)->get();
+        return response()->json($citizens, 200);
+    }
+
 }

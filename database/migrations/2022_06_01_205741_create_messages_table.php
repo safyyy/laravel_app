@@ -18,14 +18,11 @@ class CreateMessagesTable extends Migration
             // body of message
             $table->text("body");
             // Foriegn id -> collumn as integer w insigned and primary
-            $table->foreignId("sender_id");
+
             $table->foreignId("receiver_id");
 
             // Create foreign relationship
-            $table->foreign('sender_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+
             $table->foreign('receiver_id')
                 ->references('id')
                 ->on('users')
