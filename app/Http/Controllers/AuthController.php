@@ -29,7 +29,8 @@ class AuthController extends Controller
             'age'=>$req->age,
             'email'=>$req->email,
             'password'=>Hash::make($req->password),
-            'avatar'=>$req->avatar
+            'avatar'=>$req->avatar,
+            'gender'=>$req->gender
         ]);
         $token = $user->createToken('Personal Access Token')->plainTextToken;
         $response= ['user'=> $user, 'token'=>$token];

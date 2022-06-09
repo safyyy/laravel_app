@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->integer("admin")->default(0);
             $table->integer("status")->default(0);
             $table->longText('avatar')->nullable();
+            $table->string('gender');
             $table->rememberToken();
             $table->timestamps();
         });
