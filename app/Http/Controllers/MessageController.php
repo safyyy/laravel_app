@@ -7,11 +7,11 @@ use App\Models\Message;
 
 class MessageController extends Controller
 {
-    public function getMessages(Request $request, $id)
+    public function getMessages(Request $request)
     {
-        $user = $request->user()->id;
+
         $messages = Message::
-            where("receiver_id",$id)
+            where("receiver_id",$request->id)
             ->get();
 
         return $messages;

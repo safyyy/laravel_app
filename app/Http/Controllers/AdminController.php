@@ -14,11 +14,11 @@ class AdminController extends Controller
         $female = User::where("gender","female")->count();
         $countAll=User::all()->count();
         $stats=[
-            "youth"=>$countYouth/$countAll *100,
-            "adult"=>$countAdult/$countAll *100,
-            "old"=>$countOld/$countAll *100,
-            "male"=>$male/$countAll *100,
-            "female"=>$female/$countAll *100,
+            "youth"=>round($countYouth/$countAll *100,0,PHP_ROUND_HALF_UP),
+            "adult"=>round($countAdult/$countAll *100,0,PHP_ROUND_HALF_UP),
+            "old"=>round($countOld/$countAll *100,0,PHP_ROUND_HALF_UP),
+            "male"=>round($male/$countAll *100,0,PHP_ROUND_HALF_UP),
+            "female"=>round($female/$countAll *100,0,PHP_ROUND_HALF_UP),
         ];
         return response()->json($stats, 200);
 

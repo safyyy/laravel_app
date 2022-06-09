@@ -26,15 +26,16 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get("/users",[UserController::class, 'index']);
-    Route::get("/user",[UserController::class, 'getMyDetails']);
 
-    Route::post("/setImage",[UserController::class,"updateImage"]);
-    Route::get("/messages/{id}",[MessageController::class,"getMessages"]);
-    Route::post("/message",[MessageController::class,"sendMessage"]);
-
-    Route::get("/citizens", [UserController::class, "getCitizens"]);
 
 });
+Route::get("/users",[UserController::class, 'index']);
+Route::get("/user",[UserController::class, 'getMyDetails']);
 
+Route::post("/setImage",[UserController::class,"updateImage"]);
+Route::get("/messages/{id}",[MessageController::class,"getMessages"]);
+Route::post("/message",[MessageController::class,"sendMessage"]);
+
+Route::get("/citizens", [UserController::class, "getCitizens"]);
+Route::get("/users",[UserController::class, 'index']);
 Route::get("/stats",[AdminController::class, 'getStats']);
